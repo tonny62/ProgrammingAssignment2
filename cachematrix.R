@@ -1,10 +1,8 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
-
+## This function create a list of functions that are used for get and set matrixes
 makeCacheMatrix <- function(x = matrix()) {
+    #initializing inverse with a null value
     myinverse <<- NULL
+    #functions for get and set matixes
     setmatrix <- function(x){
         mymatrix <<- x
     }
@@ -22,13 +20,15 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
-
+## This function is called to get cached inverse
 cacheSolve <- function(x, ...) {
     myinv <- x$getinverse()
+    #check if the inverse is calculated or not
     if(!is.null(myinv)) {
+        # return cached inverse
         return(myinv)
     }
+    #calculate inverse the set to the object x
     mymat <- x$getmatrix()
     myinv <- solve(mymat)
     x$setinverse(myinv)
